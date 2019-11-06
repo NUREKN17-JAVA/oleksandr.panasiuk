@@ -2,6 +2,7 @@ package ua.nure.kn.panasiuk.domain.db;
 
 import java.sql.*;
 import java.util.Collection;
+import java.util.LinkedList;
 
 import ua.nure.kn.panasiuk.domain.User;
 
@@ -9,7 +10,7 @@ public class HsqldbUserDao implements UserDao {
 	
 	private ConnectionFactory connectionFactory;
 	private static final String INSERT_QUERU = "INSERT into users (firstname, lastname, dateOfBirth) values (?, ?, ?)";
-	
+	private static final String SELECT_ALL_QUERY = "SELECT * FROM users";
 	public HsqldbUserDao(ConnectionFactory connectionFactory){
         this.connectionFactory = connectionFactory;
     }
@@ -56,9 +57,35 @@ public class HsqldbUserDao implements UserDao {
 
 	@Override
 	public Collection<User> getAll() throws DatabaseException {
-		// TODO Auto-generated method stub
-		return null;
+		Statement statement = null;
+        ResultSet resultSet = null;
+        try (Connection connection = connectionFactory.createConnection()) {
+            Collection<User> users = new LinkedList<>();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(SELECT_ALL_QUERY);
+            while (resultSet.next()) {
+                users.add(mapUser(resultSet));
+            }
+            statement.close();
+            resultSet.close();
+            return users;
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
+        }
 	}
+
+	private User mapUser(ResultSet resultSet) throws SQLException {
+        long id = resultSet.getLong(1);
+        String firstName = resultSet.getString(2);
+        String lastName = resultSet.getString(3);
+        Date dateOfBirth = resultSet.getDate(4);
+        User user = new User();
+        user.setId(id);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setDateOfBirthd(dateOfBirth);
+        return user;
+    }
 
 	@Override
 	public void update(User user) throws DatabaseException {
