@@ -34,10 +34,10 @@ public class HsqldbUserDaoTest extends TestCase {
 
     }
 
-	public void testCreate() {
+	public void testCreate() throws DatabaseException {
 		User user = new User();
-        user.setFirstName("Alex");
-        user.setLastName("Kornienko");
+        user.setFirstName("Aleksandr");
+        user.setLastName("Panasiuk");
         user.setDateOfBirthd(new Date());
 
         assertNull(user.getId());

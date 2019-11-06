@@ -52,5 +52,4 @@ public interface UserDao {
     Collection<User> findAll() throws DatabaseException;
 
 }
-		
-}
+	

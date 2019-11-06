@@ -1,18 +1,49 @@
 package ua.nure.kn.panasiuk.domain.db;
 
+import java.sql.*;
 import java.util.Collection;
 
 import ua.nure.kn.panasiuk.domain.User;
 
 public class HsqldbUserDao implements UserDao {
+	
+	private ConnectionFactory connectionFactory;
+	private static final String INSERT_QUERU = "INSERT into users (firstname, lastname, dateOfBirth) values (?, ?, ?)";
+	
+	public HsqldbUserDao(ConnectionFactory connectionFactory){
+        this.connectionFactory = connectionFactory;
+    }
 
 	public HsqldbUserDao() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public User create(User user) throws DatabaseException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = connectionFactory.createConnection();
+        try {
+            PreparedStatement statement = connection
+                    .prepareStatement(INSERT_QUERU);
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setDate(3, new Date(user.getDateOfBirthd().getTime()) );
+            int n = statement.executeUpdate();
+            if(n != 1){
+                throw new DatabaseException("Number of the date inserted rows: " + n);
+            }
+            CallableStatement callableStatement = connection
+                    .prepareCall("call IDENTITY()");
+            ResultSet keys = callableStatement.executeQuery();
+            if(keys.next()){
+                user.setId(new Long(keys.getLong(1)));
+            }
+            keys.close();
+            callableStatement.close();
+            statement.close();
+            connection.close();
+            return user;
+        } catch (SQLException e) {
+            throw new DatabaseException(e);
+        }
 	}
 
 	@Override
