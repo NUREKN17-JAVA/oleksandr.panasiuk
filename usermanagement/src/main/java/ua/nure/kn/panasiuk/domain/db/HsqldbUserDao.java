@@ -10,7 +10,6 @@ public class HsqldbUserDao implements UserDao {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public User create(User user) throws DatabaseException {
 		// TODO Auto-generated method stub
 		return null;
@@ -35,9 +34,21 @@ public class HsqldbUserDao implements UserDao {
 	}
 
 	@Override
-	public void delete(User user) throws DatabaseException {
+	public void delete (User user) throws DatabaseException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setConnectionFactory(ConnectionFactory connectionFactory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Collection<User> findAll() throws DatabaseException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
