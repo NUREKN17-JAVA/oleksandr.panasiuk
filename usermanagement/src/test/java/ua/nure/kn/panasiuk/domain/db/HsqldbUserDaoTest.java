@@ -1,6 +1,7 @@
 package ua.nure.kn.panasiuk.domain.db;
 
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.dbunit.database.IDatabaseConnection;
@@ -13,7 +14,6 @@ import ua.nure.kn.panasiuk.domain.User;
 public class HsqldbUserDaoTest extends TestCase {
 	
 	private UserDao userDao;
-	
 	protected IDatabaseConnection getConnection() throws Exception {
         return null;
     }
@@ -26,6 +26,8 @@ public class HsqldbUserDaoTest extends TestCase {
    
     public void setUp() throws Exception {
        super.setUp();
+       connectionFactory = new ConnectionFactoryImpl();
+       userDao = new HsqldbUserDao(connectionFactory);
     }
 
  
@@ -49,5 +51,11 @@ public class HsqldbUserDaoTest extends TestCase {
         assertEquals(userExpected.getLastName(), user.getFullName());
         assertEquals(userExpected.getDateOfBirthd(), user.getDateOfBirthd());
 	}
+	   public void testFindAll() throws DatabaseException {
+	        int expectedUsersNumber = 2;
+	        Collection<User> users = userDao.findAll();
+	        assertNotNull("Collection is null", users);
+	        assertEquals("Collection size.", expectedUsersNumber, users.size());
+	    }
 
 }
