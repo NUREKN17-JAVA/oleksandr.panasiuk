@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class DaoFactory {
 
-	 private static final String USER_DAO = "dao.ua.nure.kornienko.usermanagement.db.UserDao";
+	 private static final String USER_DAO = "dao.ua.nure.panasiuk.usermanagement.db.UserDao";
 	    private static final String CONNECTION_DRIVER = "connection.driver";
 	    private static final String CONNECTION_URL = "connection.url";
 	    private static final String CONNECTION_USER = "connection.user";
