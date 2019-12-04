@@ -48,7 +48,8 @@ public class UserTest extends TestCase {
 	private User user;
 
 	public void setUp() throws Exception {
-		user = new User();
+		super.setUp();
+        user = new User();
 	}
 
 	public void tearDown() throws Exception {

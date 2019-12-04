@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ua.nure.kn.panasiuk.domain.User;
-import ua.nure.kn.panasiuk.domain.db.DatabaseException;
 import ua.nure.kn.panasiuk.domain.util.Messages;
 
 public class DetailsPanel extends JPanel implements ActionListener {

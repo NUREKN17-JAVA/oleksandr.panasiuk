@@ -156,5 +156,13 @@
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+		@Override
+		public User find(Long ID) throws DatabaseException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		
 	
 	}

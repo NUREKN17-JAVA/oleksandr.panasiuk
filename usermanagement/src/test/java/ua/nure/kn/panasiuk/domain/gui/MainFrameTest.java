@@ -23,7 +23,7 @@ import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.eventdata.StringEventData;
 import junit.extensions.jfcunit.finder.DialogFinder;
 import junit.extensions.jfcunit.finder.NamedComponentFinder;
-import ua.nure.kn.kornienko.usermanagement.db.MockDaoFactory;
+import ua.nure.kn.panasiuk.domain.db.MockDaoFactory;
 import ua.nure.kn.panasiuk.domain.User;
 import ua.nure.kn.panasiuk.domain.db.DaoFactory;
 import ua.nure.kn.panasiuk.domain.util.Messages;
