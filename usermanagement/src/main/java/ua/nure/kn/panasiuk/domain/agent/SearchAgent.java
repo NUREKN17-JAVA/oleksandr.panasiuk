@@ -1,0 +1,1 @@
+package ua.nure.kn.panasiuk.domain.agent;
