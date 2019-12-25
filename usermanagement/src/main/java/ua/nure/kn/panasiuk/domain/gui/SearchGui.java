@@ -11,9 +11,9 @@ import java.util.LinkedList;
 import javax.swing.*;
 
 import ua.nure.kn.panasiuk.domain.User;
-import ua.nure.kn.panasiuk.domain.agent.exception.SearchException;
 import ua.nure.kn.panasiuk.domain.util.TextManager;
 import ua.nure.kn.panasiuk.domain.agent.SearchAgent;
+import ua.nure.kn.panasiuk.domain.agent.exception.SearchException;
 
 public class SearchGui extends JFrame {
 

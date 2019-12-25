@@ -1,4 +1,4 @@
-package ua.nure.kn.panasiuk.domain.agent;
+package ua.nure.kn.panasiuk.domain.agent.behaviour;
 
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;

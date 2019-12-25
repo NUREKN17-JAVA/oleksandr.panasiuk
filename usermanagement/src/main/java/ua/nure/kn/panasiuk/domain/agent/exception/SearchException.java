@@ -1,4 +1,4 @@
-package ua.nure.kn.panasiuk.domain.agent;
+package ua.nure.kn.panasiuk.domain.agent.exception;
 
 /**
  * This exception marks excetions, that are connected to the execution of a search agent
